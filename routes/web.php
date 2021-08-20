@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\DetallesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +70,21 @@ Route::get('producto/editar/{id}',[ProductoController::class, 'edit'])->name('pr
 Route::put('producto/editar/{id}',[ProductoController::class, 'update'])-> where('id' ,'[0-9]+');
 
 Route::delete('producto/borrar/{id}',[ProductoController::class, 'destroy'])->name('producto.borrar')-> where('id' ,'[0-9]+');
+
+//RUTAS FACTURA
+
+Route::get('factura',[FacturaController::class, 'index'])->name('factura.index');
+
+Route::get('factura/nuevo',[FacturaController::class, 'create'])->name('factura.nuevo');
+
+Route::post('factura/nuevo',[FacturaController::class, 'store']);
+
+Route::get('factura/nuevo/agregar/{id}',[DetallesController::class, 'create'])->name('factura.agregar')-> where('id' ,'[0-9]+');
+
+Route::post('factura/nuevo/agregar/{id}',[DetallesController::class, 'store'])-> where('id' ,'[0-9]+');
+
+Route::delete('factura/borrar/{id}',[FacturaController::class, 'destroy'])->name('factura.borrar')-> where('id' ,'[0-9]+');
+
+Route::get('factura/{id}',[FacturaController::class, 'show'])->name('factura.ver')-> where('id' ,'[0-9]+');
+
+
