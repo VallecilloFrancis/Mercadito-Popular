@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProveedorController;
-
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +52,19 @@ Route::get('proveedor/editar/{id}',[ProveedorController::class, 'edit'])->name('
 Route::put('proveedor/editar/{id}',[ProveedorController::class, 'update'])-> where('id' ,'[0-9]+');
 
 Route::delete('proveedor/borrar/{id}',[ProveedorController::class, 'destroy'])->name('proveedor.borrar')-> where('id' ,'[0-9]+');
+
+//RUTAS PRODUCTO
+
+Route::get('producto',[ProductoController::class, 'index'])->name('producto.index');
+
+Route::get('producto/nuevo',[ProductoController::class, 'create'])->name('producto.nuevo');
+
+Route::post('producto/nuevo',[ProductoController::class, 'store']);
+
+Route::get('producto/{id}',[ProductoController::class, 'show'])->name('producto.ver')-> where('id' ,'[0-9]+');
+
+Route::get('producto/editar/{id}',[ProductoController::class, 'edit'])->name('producto.edit')-> where('id' ,'[0-9]+');
+
+Route::put('producto/editar/{id}',[ProductoController::class, 'update'])-> where('id' ,'[0-9]+');
+
+Route::delete('producto/borrar/{id}',[ProductoController::class, 'destroy'])->name('producto.borrar')-> where('id' ,'[0-9]+');
